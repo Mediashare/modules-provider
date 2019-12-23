@@ -56,6 +56,7 @@ Class Modules
             require_once $moduleFile;
             $className = $this->config->getNamespace().basename($moduleFile, '.php');
             $module = new $className();
+            $module->methods = get_class_methods($module);
             $moduleName = basename($moduleFile, '.php');
             $modules[$moduleName] = $module;
         }
