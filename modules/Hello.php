@@ -1,7 +1,7 @@
 <?php
 namespace Mediashare\Modules;
 
-class Helloqsd
+class Hello
 {
     public $prefix;
     public function echo(?string $message) {
