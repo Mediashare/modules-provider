@@ -10,11 +10,12 @@ Class Modules
     public function __construct(?Config $config = null) {
         if (!$config): $config = new Config(); endif;
         $this->config = $config;
+        $this->modules = $this->getModules();
     }
 
     public function run(?string $module = null) {
         if ($module):
-            $this->$modules[] = $this->getModule($module);
+            $this->$modules = [$this->getModule($module)];
         endif;
         if (!$this->modules):
             $this->modules = $this->getModules();
@@ -30,7 +31,7 @@ Class Modules
         endforeach;
     }
 
-    
+
     public function getModule(string $className) {
         $modules = $this->getModules();
         foreach ($modules as $moduleName => $module):
