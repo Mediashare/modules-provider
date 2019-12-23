@@ -25,7 +25,7 @@ class Config {
     public function getNamespace(): ?string
     {
         if (!$this->namespace):
-            $this->namespace = "Mediashare\\ModulesProvider\\Modules\\";
+            $this->namespace = "Mediashare\\Modules\\";
         endif;
         return rtrim(rtrim($this->namespace,'\\'), "\\").'\\';
     }
