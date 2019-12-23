@@ -2,6 +2,7 @@
 namespace Mediashare\ModulesProvider;
 
 use Exception;
+use Mediashare\ModulesProvider\Config;
 
 
 Class Modules
