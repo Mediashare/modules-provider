@@ -1,9 +1,8 @@
 {
     "name": "mediashare/modules-provider",
+    "description": "Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects.",
     "type": "library",
-    "require": {
-        "mediashare/crawler": "^0.0.4"
-    },
+    "require": {},
     "require-dev": {
         "tracy/tracy": "^2.7"
     },
@@ -14,5 +13,10 @@
             "email": "mediashare.supp@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Mediashare\\ModulesProvider\\": "src/"
+        }
+    }
 }
