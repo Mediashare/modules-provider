@@ -6,6 +6,7 @@ class Hello
     public $prefix;
     public $message = "Not message recorded :( \n";
     public function run() {
+        dump("Helloqsdkqmsldk");
         $this->echo();
         return $this;
     }
