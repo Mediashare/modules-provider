@@ -64,7 +64,11 @@ Class Modules
         foreach($modulesFiles as $moduleFile) {
             $module = $this->initModule($moduleFile);
             if ($module):
-                $modules[] = $module;
+                if (empty($module->position)):
+                    $modules[] = $module;
+                else:
+                    $modules[$module->position] = $module;
+                endif;
             endif;
         }
         return $modules;
@@ -85,7 +89,9 @@ Class Modules
             require_once $moduleFile;
             $module = new $className();
             $module->name = $moduleName;
+            $module->position = array_search($moduleName, $this->config->getModules());
             $module->methods = get_class_methods($module);
+            dump($module);
         endif;
 
         return $module;
