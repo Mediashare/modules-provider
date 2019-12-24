@@ -33,7 +33,7 @@ Class Cluster
             if (method_exists($module, 'run')):
                 $module->run();
             else:
-                $message = "public function run() in Module [".$className."] not found in [".$this->config->getModulesDir().$className.".php]. public function run() is needle for call automated action.";
+                $message = "public function run() in Module [".$className."]. public function run() is needle for call automated action.";
                 trigger_error($message, E_USER_NOTICE);
             endif;
         endforeach;

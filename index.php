@@ -20,12 +20,17 @@ $hello->prefix = "[Message du module Hello] ";
 
 // Use modules cluster with automated action
 $modules = new Modules($config); // $modules = ['Hello', 'Git']
+$run = $modules->getModule('Hello');
+$run->message = "[RUN] Git push";
 $modules->getModule('Git')->message = "Commit message test 3"; // Init message for commit
+$end = $modules->getModule('Hello');
+$end->message = "[END] Git push";
+
 $cluster = new Cluster();
 $cluster->setModules([
-    $modules->getModule('Hello'),
+    $run,
     $modules->getModule('Git'),
-    $modules->getModule('Hello'),    
+    $end,
 ]);
 $cluster->run(); 
 // $git->run(); 
