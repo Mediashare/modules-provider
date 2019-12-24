@@ -4,7 +4,10 @@ namespace Mediashare\ModulesProvider;
 use Exception;
 use Mediashare\ModulesProvider\Config;
 
-
+/**
+ * Modules Provider
+ * Autoload Modules from $config->getModulesDir() with $config->getNamespace() 
+ */
 Class Modules
 {
     public $modules = [];
@@ -33,6 +36,12 @@ Class Modules
     }
 
 
+    /**
+     * Get specific module & init this.
+     *
+     * @param string $className
+     * @return object $module;
+     */
     public function getModule(string $className) {
         $modules = $this->getModules();
         foreach ($modules as $moduleName => $module):
@@ -46,19 +55,29 @@ Class Modules
     /**
      * Get all modules from modules directory. These modules are init in an array.
      *
-     * @return array
+     * @return array|null $modules
      */
-    public function getModules(): array {
+    public function getModules(): ?array {
         $moduleDir = $this->config->getModulesDir();
         $modulesFiles = glob($moduleDir.'*.php');
         $modules = [];
         foreach($modulesFiles as $moduleFile) {
-            require_once $moduleFile;
             $className = $this->config->getNamespace().basename($moduleFile, '.php');
-            $module = new $className();
-            $module->methods = get_class_methods($module);
             $moduleName = basename($moduleFile, '.php');
-            $modules[$moduleName] = $module;
+            if (!is_array($this->config->getModules())):
+                // Init Module
+                require_once $moduleFile;
+                $module = new $className();
+                $module->methods = get_class_methods($module);
+                $modules[$moduleName] = $module;
+            elseif (in_array($moduleName, $this->config->getModules())):
+                // Init Module
+                require_once $moduleFile;
+                $module = new $className();
+                $module->methods = get_class_methods($module);
+                $moduleName = basename($moduleFile, '.php');
+                $modules[$moduleName] = $module;
+            endif;
         }
         return $modules;
     }
