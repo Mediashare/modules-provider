@@ -47,11 +47,23 @@ Class Modules
         return $module;
     }
 
+
+    /**
+     * Macro for access to Module
+     *
+     * @param string $module
+     * @return object $module
+     */
+    public function get(string $module): object {
+        return $this->getModule($module);
+    }
+
     /**
      * Get specific module & init this.
      *
      * @param string $className
-     * @return object $module;
+     * @return object $module
+     * @deprecated You should be use get() function.
      */
     public function getModule(string $className) {
         foreach ($this->modules as $module):
@@ -60,9 +72,5 @@ Class Modules
             endif;
         endforeach;
         throw new Exception("Module [".$className."] not found in [".$this->config->getModulesDir().$className.".php] with namespace [".\rtrim($this->config->getNamespace(), "\\")."]", 1);
-    }
-
-    public function get(string $module) {
-        return $this->getModule($module);
     }
 }
