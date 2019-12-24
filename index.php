@@ -16,12 +16,12 @@ $config->addModule('Hello'); // Add Hello object from ./modules/Hello.php
 $modules = new Modules($config);
 $hello = $modules->getModule("Hello"); 
 $hello->prefix = "[Message du module Hello] ";
-$hello->echo("Bonjour \n");
+// $hello->echo("Bonjour \n");
 
 // Use modules cluster with automated action
-$config->addModule('Git');
-$modules = new Modules($config);
-$modules->modules['Git']->message = "Commit message test 2";
-$modules->run();
+$config->setModules(["Hello", "Git"]);
+$modules = new Modules($config); // $modules = ['Hello', 'Git']
+$modules->modules['Git']->message = "Commit message test 2"; // Init message for commit
+$modules->run(); 
 // $git->run(); 
 dump($modules);

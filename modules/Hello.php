@@ -5,7 +5,7 @@ class Hello
 {
     public $prefix;
     public function run() {
-        $this->echo;
+        $this->echo();
         return $this;
     }
     public function echo(?string $message) {
