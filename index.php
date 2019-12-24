@@ -28,9 +28,9 @@ $end->message = "[END] Git push \n";
 
 $cluster = new Cluster();
 $cluster->setModules([
-    $run,
+    $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
     $modules->getModule('Git'),
-    $end,
+    $modules->getModule('Hello')->setMessage("[END] Git push \n"),
 ]);
 $cluster->run(); 
 // dump($cluster);die;
