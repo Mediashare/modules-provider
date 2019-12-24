@@ -6,7 +6,6 @@ class Hello
     public $prefix;
     public $message = "Not message recorded :( \n";
     public function run() {
-        dump("Helloqsdkqmsldk");
         $this->echo();
         return $this;
     }
@@ -14,7 +13,7 @@ class Hello
         if (!empty($message)):
             $this->message = $message;
         endif;
-        $message = $this->prefix . $message;
+        $message = $this->prefix . $this->message;
         echo $message;
         return $message;
     }
