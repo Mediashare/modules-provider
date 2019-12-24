@@ -3,7 +3,7 @@ namespace Mediashare\ModulesProvider;
 
 /**
  * Cluster
- * Module ArrayCollection for use cluster. 
+ * Create Modules Cluster for use automated action with function run().
  */
 Class Cluster
 {
@@ -15,7 +15,7 @@ Class Cluster
         $this->modules = $modules;
         return $this;
     }
-    public function addModule(string $module): self {
+    public function addModule(object $module): self {
         $this->modules[] = $module;
         return $this;
     }
@@ -33,7 +33,6 @@ Class Cluster
             if (method_exists($module, 'run')):
                 $module->run();
             else:
-                dump($module);die;
                 $message = "public function run() in Module [".$module->name."]. public function run() is needle for call automated action.";
                 trigger_error($message, E_USER_NOTICE);
             endif;
