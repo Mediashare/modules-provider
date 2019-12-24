@@ -14,12 +14,12 @@ $modules = new Modules($config);
 
 // Using one module
 $hello = $modules->get("Hello"); 
-$hello->prefix = "[Message du module Hello] ";
+$hello->prefix = "[GIT] ";
 $hello->echo("Bonjour \n");
 
 
 // Using Cluster
-$modules->get('Git')->message = "Commit message test 4"; // Init message for commit
+$modules->get('Git')->message = "Cluster"; // Init message for commit
 $cluster = new Cluster(); // Create Cluster
 $cluster->setModules([
     clone $modules->get('Hello')->setMessage("[RUN] Git push \n"),
