@@ -44,8 +44,8 @@ Class Modules
      */
     public function getModule(string $className) {
         $modules = $this->getModules();
-        foreach ($modules as $moduleName => $module):
-            if ($className == $moduleName):
+        foreach ($modules as $module):
+            if ($className == $module->name):
                 return $module;
             endif;
         endforeach;
@@ -76,11 +76,13 @@ Class Modules
             // Init Module
             require_once $moduleFile;
             $module = new $className();
+            $module->name = $moduleName;
             $module->methods = get_class_methods($module);
         elseif (in_array($moduleName, $this->config->getModules())):
             // Init Module
             require_once $moduleFile;
             $module = new $className();
+            $module->name = $moduleName;
             $module->methods = get_class_methods($module);
         endif;
 
