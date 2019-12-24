@@ -51,7 +51,7 @@ $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
 $modules = new Modules($config);
-$hello = $modules->getModule("Hello");
+$hello = $modules->get("Hello");
 $hello->prefix = "[Message] ";
 $hello->echo('Bonjour');
 ```
@@ -70,12 +70,12 @@ $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
 $modules = new Modules($config);
 
-$modules->getModule('Git')->message = "Commit message test 4"; // Init message for commit
+$modules->get('Git')->message = "Commit message test 4"; // Init message for commit
 $cluster = new Cluster(); // Create Cluster
 $cluster->setModules([
-    clone $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
-    $modules->getModule('Git'),
-    clone $modules->getModule('Hello')->setMessage("[END] Git push \n"),
+    clone $modules->get('Hello')->setMessage("[RUN] Git push \n"),
+    $modules->get('Git'),
+    clone $modules->get('Hello')->setMessage("[END] Git push \n"),
 ]);
 $cluster->run();
 ```
