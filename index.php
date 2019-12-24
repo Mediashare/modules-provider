@@ -6,22 +6,22 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
-$config->addModule('Hello');
-$config->addModule('Git');
-$modules = new Modules($config);
 
 // Get all modules instancied.
-$modules_list = $modules->getModules();
-// dump($modules_list);die;
-
-$git = $modules->getModule("Git");
-$git->message = "Commit message test";
-$git->run();
-dump($git);die;
+$modules = new Modules($config);
+// dump($modules);die;
 
 // Use one module
-$hello = $modules->getModule("Hello"); // Get Hello object from ./modules/Hello.php
+$config->addModule('Hello'); // Add Hello object from ./modules/Hello.php
+$modules = new Modules($config);
+$hello = $modules->getModule("Hello"); 
 $hello->prefix = "[Message du module Hello] ";
 $hello->echo("Bonjour \n");
 
-// Use several modules 
+// Use modules cluster with automated action
+$config->addModule('Git');
+$modules = new Modules($config);
+$modules->modules['Git']->message = "Commit message test 2";
+$modules->run();
+// $git->run(); 
+dump($modules);
