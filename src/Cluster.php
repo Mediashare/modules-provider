@@ -29,10 +29,11 @@ Class Cluster
     }
 
     public function run() {
-        foreach ($this->modules as $className => $module):
+        foreach ($this->modules as $module):
             if (method_exists($module, 'run')):
                 $module->run();
             else:
+                dump($module);die;
                 $message = "public function run() in Module [".$className."]. public function run() is needle for call automated action.";
                 trigger_error($message, E_USER_NOTICE);
             endif;

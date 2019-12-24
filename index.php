@@ -22,7 +22,7 @@ $hello->prefix = "[Message du module Hello] ";
 $modules = new Modules($config); // $modules = ['Hello', 'Git']
 $run = $modules->getModule('Hello');
 $run->message = "[RUN] Git push";
-$modules->getModule('Git')->message = "Commit message test 3"; // Init message for commit
+$modules->getModule('Git')->message = "Commit message test 4"; // Init message for commit
 $end = $modules->getModule('Hello');
 $end->message = "[END] Git push";
 
@@ -33,5 +33,6 @@ $cluster->setModules([
     $end,
 ]);
 $cluster->run(); 
+dump($cluster);die;
 // $git->run(); 
 // dump($modules);
