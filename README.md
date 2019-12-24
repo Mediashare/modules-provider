@@ -62,10 +62,20 @@ $hello->echo('Bonjour');
 // ./index.php
 require "vendor/autoload.php";
 use Mediashare\ModulesProvider\Config;
+use Mediashare\ModulesProvider\Cluster;
 use Mediashare\ModulesProvider\Modules;
 
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
 $modules = new Modules($config);
+
+$modules->getModule('Git')->message = "Commit message test 4"; // Init message for commit
+$cluster = new Cluster(); // Create Cluster
+$cluster->setModules([
+    clone $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
+    $modules->getModule('Git'),
+    clone $modules->getModule('Hello')->setMessage("[END] Git push \n"),
+]);
+$cluster->run();
 ```

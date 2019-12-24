@@ -29,12 +29,7 @@ Class Modules
         foreach($modulesFiles as $moduleFile) {
             $module = $this->initModule($moduleFile);
             if ($module):
-                if (empty($module->position)):
-                    $modules[] = $module;
-                else:
-                    $modules[$module->position] = $module;
-                    \ksort($modules);
-                endif;
+                $modules[] = $module;
             endif;
         }
         return $modules;
@@ -65,5 +60,9 @@ Class Modules
             endif;
         endforeach;
         throw new Exception("Module [".$className."] not found in [".$this->config->getModulesDir().$className.".php] with namespace [".\rtrim($this->config->getNamespace(), "\\")."]", 1);
+    }
+
+    public function get(string $module) {
+        return $this->getModule($module);
     }
 }

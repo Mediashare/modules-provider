@@ -12,18 +12,18 @@ $config->setNamespace("Mediashare\\Modules\\");
 $modules = new Modules($config);
 // dump($modules);
 
-// Use one module
-$hello = $modules->getModule("Hello"); 
+// Using one module
+$hello = $modules->get("Hello"); 
 $hello->prefix = "[Message du module Hello] ";
 $hello->echo("Bonjour \n");
 
 
-$modules->getModule('Git')->message = "Commit message test 4"; // Init message for commit
+// Using Cluster
+$modules->get('Git')->message = "Commit message test 4"; // Init message for commit
 $cluster = new Cluster(); // Create Cluster
 $cluster->setModules([
-    clone $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
-    $modules->getModule('Git'),
-    clone $modules->getModule('Hello')->setMessage("[END] Git push \n"),
+    clone $modules->get('Hello')->setMessage("[RUN] Git push \n"),
+    $modules->get('Git'),
+    clone $modules->get('Hello')->setMessage("[END] Git push \n"),
 ]);
 $cluster->run();
-dump($cluster);
