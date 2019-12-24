@@ -19,8 +19,8 @@ $hello->prefix = "[Message du module Hello] ";
 // $hello->echo("Bonjour \n");
 
 // Use modules cluster with automated action
-$config->setModules(["Hello", "Git"]);
-// dump($config);die;
+$config->setModules(["Git", "Hello"]);
+// dump($config)
 $modules = new Modules($config); // $modules = ['Hello', 'Git']
 $modules->getModule('Git')->message = "Commit message test 2"; // Init message for commit
 $modules->run(); 
