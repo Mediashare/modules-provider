@@ -24,9 +24,9 @@ $modules->getModule('Git')->message = "Commit message test 4"; // Init message f
 // Create Cluster
 $cluster = new Cluster();
 $cluster->setModules([
-    $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
+    clone $modules->getModule('Hello')->setMessage("[RUN] Git push \n"),
     $modules->getModule('Git'),
-    $modules->getModule('Hello')->setMessage("[END] Git push \n"),
+    clone $modules->getModule('Hello')->setMessage("[END] Git push \n"),
 ]);
 $cluster->run(); 
 // dump($cluster);
