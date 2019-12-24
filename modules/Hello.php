@@ -8,7 +8,7 @@ class Hello
         $this->echo();
         return $this;
     }
-    public function echo(?string $message) {
+    public function echo(?string $message = null) {
         if (empty($message)):
             $message = "Not message recorded :(";
         endif;
