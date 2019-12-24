@@ -71,6 +71,7 @@ Class Modules
     public function initModule(string $moduleFile) {
         $className = $this->config->getNamespace().basename($moduleFile, '.php');
         $moduleName = basename($moduleFile, '.php');
+        $module = null;
         if (!is_array($this->config->getModules())):
             // Init Module
             require_once $moduleFile;
