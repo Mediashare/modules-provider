@@ -9,7 +9,6 @@ namespace Mediashare\ModulesProvider;
 class Config {
     public $modulesDir;
     public $namespace;
-    public $modules = null; // If null then enable all modules from $modulesDir
 
     public function getModulesDir(): ?string
     {
@@ -36,33 +35,6 @@ class Config {
     public function setNamespace(string $namespace): self
     {
         $this->namespace = $namespace;
-        return $this;
-    }
-
-    public function getModules(): ?array
-    {
-        return $this->modules;
-    }
-
-    public function setModules(array $modules): self
-    {
-        $this->modules = $modules;
-        return $this;
-    }
-
-    public function addModule(string $module): self
-    {
-        $this->modules[] = $module;
-        return $this;
-    }
-
-    public function removeModule(string $module): self
-    {
-        foreach ($this->getModules() as $index => $object) {
-            if ($module == $object):
-                unset($this->modules[$index]);
-            endif;
-        }
         return $this;
     }
 }
