@@ -44,8 +44,8 @@ Class Modules
      */
     public function getModule(string $className) {
         $modules = $this->getModules();
+        dump($modules);
         foreach ($modules as $module):
-            dump($module);
             if ($className == $module->name):
                 return $module;
             endif;
