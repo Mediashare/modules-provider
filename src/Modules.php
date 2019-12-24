@@ -73,4 +73,8 @@ Class Modules
         endforeach;
         throw new Exception("Module [".$className."] not found in [".$this->config->getModulesDir().$className.".php] with namespace [".\rtrim($this->config->getNamespace(), "\\")."]", 1);
     }
+
+    public function getModules(): ?array {
+        return $this->modules;
+    }
 }
