@@ -12,7 +12,7 @@ $modules = new Modules($config);
 // dump($modules);die;
 
 // Use one module
-$config->addModule('Hello'); // Add Hello object from ./modules/Hello.php
+$config->setModules(['Hello']); // Add Hello object from ./modules/Hello.php
 $modules = new Modules($config);
 $hello = $modules->getModule("Hello"); 
 $hello->prefix = "[Message du module Hello] ";
