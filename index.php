@@ -21,10 +21,10 @@ $hello->prefix = "[Message du module Hello] ";
 // Use modules cluster with automated action
 $modules = new Modules($config); // $modules = ['Hello', 'Git']
 $run = clone $modules->getModule('Hello');
-$run->message = "[RUN] Git push";
+$run->message = "[RUN] Git push \n";
 $modules->getModule('Git')->message = "Commit message test 4"; // Init message for commit
 $end = clone $modules->getModule('Hello');
-$end->message = "[END] Git push";
+$end->message = "[END] Git push \n";
 
 $cluster = new Cluster();
 $cluster->setModules([
