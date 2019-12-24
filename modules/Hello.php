@@ -10,7 +10,7 @@ class Hello
     }
     public function echo(?string $message = null) {
         if (empty($message)):
-            $message = "Not message recorded :(";
+            $message = "Not message recorded :( \n";
         endif;
         $message = $this->prefix . $message;
         echo $message;

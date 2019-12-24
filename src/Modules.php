@@ -62,23 +62,27 @@ Class Modules
         $modulesFiles = glob($moduleDir.'*.php');
         $modules = [];
         foreach($modulesFiles as $moduleFile) {
-            $className = $this->config->getNamespace().basename($moduleFile, '.php');
-            $moduleName = basename($moduleFile, '.php');
-            if (!is_array($this->config->getModules())):
-                // Init Module
-                require_once $moduleFile;
-                $module = new $className();
-                $module->methods = get_class_methods($module);
-                $modules[$moduleName] = $module;
-            elseif (in_array($moduleName, $this->config->getModules())):
-                // Init Module
-                require_once $moduleFile;
-                $module = new $className();
-                $module->methods = get_class_methods($module);
-                $moduleName = basename($moduleFile, '.php');
-                $modules[$moduleName] = $module;
-            endif;
+            $module = $this->initModule($moduleFile);
+            $modules[] = $module;
         }
         return $modules;
+    }
+
+    public function initModule(string $moduleFile) {
+        $className = $this->config->getNamespace().basename($moduleFile, '.php');
+        $moduleName = basename($moduleFile, '.php');
+        if (!is_array($this->config->getModules())):
+            // Init Module
+            require_once $moduleFile;
+            $module = new $className();
+            $module->methods = get_class_methods($module);
+        elseif (in_array($moduleName, $this->config->getModules())):
+            // Init Module
+            require_once $moduleFile;
+            $module = new $className();
+            $module->methods = get_class_methods($module);
+        endif;
+
+        return $module;
     }
 }
