@@ -68,6 +68,7 @@ Class Modules
                     $modules[] = $module;
                 else:
                     $modules[$module->position] = $module;
+                    \sort($modules);
                 endif;
             endif;
         }
@@ -89,9 +90,8 @@ Class Modules
             require_once $moduleFile;
             $module = new $className();
             $module->name = $moduleName;
-            $module->position = array_search($moduleName, $this->config->getModules());
+            $module->position = array_search($moduleName, $this->config->getModules()) + 1;
             $module->methods = get_class_methods($module);
-            dump($module);
         endif;
 
         return $module;

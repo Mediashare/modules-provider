@@ -22,8 +22,7 @@ $hello->prefix = "[Message du module Hello] ";
 $config->setModules(["Hello", "Git"]);
 // dump($config);die;
 $modules = new Modules($config); // $modules = ['Hello', 'Git']
-// dump($modules->modules, $config);die;
 $modules->getModule('Git')->message = "Commit message test 2"; // Init message for commit
 $modules->run(); 
 // $git->run(); 
-dump($modules);
+// dump($modules);
