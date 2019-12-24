@@ -1,6 +1,6 @@
 {
     "name": "mediashare/modules-provider",
-    "description": "Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects.",
+    "description": "Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects. You can call object(s) from different folders and create a container with multiple objects.",
     "type": "library",
     "require": {},
     "require-dev": {

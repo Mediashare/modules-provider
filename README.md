@@ -1,5 +1,5 @@
 # Modules Provider
-:dizzy: Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects. You can call object(s) from different folders and create several container with multiple objects.
+:dizzy: Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects. You can call object(s) from different folders and create a container with multiple objects.
 ## Installation
 ```bash
 composer require mediashare/modules-provider
