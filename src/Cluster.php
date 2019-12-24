@@ -29,6 +29,7 @@ Class Cluster
     }
 
     public function run() {
+        dump($this->modules);
         foreach ($this->modules as $module):
             if (method_exists($module, 'run')):
                 $module->run();
