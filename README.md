@@ -55,3 +55,17 @@ $hello = $modules->getModule("Hello");
 $hello->prefix = "[Message] ";
 $hello->echo('Bonjour');
 ```
+
+## Cluster Usage
+```php
+<?php
+// ./index.php
+require "vendor/autoload.php";
+use Mediashare\ModulesProvider\Config;
+use Mediashare\ModulesProvider\Modules;
+
+$config = new Config();
+$config->setModulesDir(__DIR__.'/modules/');
+$config->setNamespace("Mediashare\\Modules\\");
+$modules = new Modules($config);
+```
