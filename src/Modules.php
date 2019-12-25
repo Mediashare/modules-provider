@@ -2,6 +2,7 @@
 namespace Mediashare\ModulesProvider;
 
 use Exception;
+use League\CLImate\CLImate;
 use Mediashare\ModulesProvider\Config;
 
 /**
@@ -29,9 +30,11 @@ Class Modules
         foreach($modulesFiles as $moduleFile) {
             $module = $this->initModule($moduleFile);
             if ($module):
-                $climate = new \League\CLImate\CLImate;
-                $climate->to('out')->green('[Module Added] '. $module->name);
                 $modules[] = $module;
+                if ($this->config->getVerbose()):
+                    $climate = new CLImate();
+                    $climate->to('out')->green('[Module Added] '. $module->name);
+                endif;
             endif;
         }
         return $modules;

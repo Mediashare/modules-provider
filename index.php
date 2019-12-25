@@ -7,6 +7,7 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
+$config->setVerbose(true);
 
 // Get all modules instancied.
 $modules = new Modules($config);

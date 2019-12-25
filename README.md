@@ -16,6 +16,7 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
+$config->setVerbose(true);
 $modules = new Modules($config);
 ```
 ### Modules
@@ -50,6 +51,7 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
+$config->setVerbose(true);
 $modules = new Modules($config);
 $hello = $modules->get("Hello");
 $hello->prefix = "[Message] ";
@@ -68,6 +70,7 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
+$config->setVerbose(true);
 $modules = new Modules($config);
 
 $modules->get('Git')->message = "Commit message test 4"; // Init message for commit

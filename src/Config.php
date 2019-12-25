@@ -5,10 +5,12 @@ namespace Mediashare\ModulesProvider;
  * Config
  * @param string $modulesDir Modules path.
  * @param string $namespace Modules namespace used for instancied class.
+ * @param string $verbose Event output.
  */
 class Config {
     public $modulesDir;
     public $namespace;
+    public $verbose = false;
 
     public function getModulesDir(): ?string
     {
@@ -35,6 +37,17 @@ class Config {
     public function setNamespace(string $namespace): self
     {
         $this->namespace = $namespace;
+        return $this;
+    }
+
+    public function getVerbose(): ?bool
+    {
+        return $this->verbose;
+    }
+
+    public function setVerbose(bool $verbose): self
+    {
+        $this->verbose = $verbose;
         return $this;
     }
 }
