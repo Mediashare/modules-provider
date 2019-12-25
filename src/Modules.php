@@ -29,6 +29,8 @@ Class Modules
         foreach($modulesFiles as $moduleFile) {
             $module = $this->initModule($moduleFile);
             if ($module):
+                $climate = new \League\CLImate\CLImate;
+                $climate->to('error')->red('Something went terribly wrong.');
                 $modules[] = $module;
             endif;
         }
