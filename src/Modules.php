@@ -31,10 +31,6 @@ Class Modules
             $module = $this->initModule($moduleFile);
             if ($module):
                 $modules[] = $module;
-                if ($this->config->getVerbose()):
-                    $climate = new CLImate();
-                    $climate->to('out')->green('[Module Added] '. $module->name);
-                endif;
             endif;
         }
         return $modules;
@@ -48,6 +44,11 @@ Class Modules
         $module = new $className();
         $module->name = $moduleName;
         $module->methods = get_class_methods($module);
+        
+        if ($this->config->getVerbose()):
+            $climate = new CLImate();
+            $climate->to('out')->green('[Module Added] '. $module->name);
+        endif;
 
         return $module;
     }
