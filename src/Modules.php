@@ -30,7 +30,7 @@ Class Modules
             $module = $this->initModule($moduleFile);
             if ($module):
                 $climate = new \League\CLImate\CLImate;
-                $climate->to('error')->red('Something went terribly wrong.');
+                $climate->to('out')->green('[Module Added] '. $module->name);
                 $modules[] = $module;
             endif;
         }
