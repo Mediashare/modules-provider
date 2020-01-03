@@ -30,14 +30,18 @@ namespace Mediashare\Modules;
 
 class Hello
 {
-    public $prefix;
-    public function echo(?string $message) {
-        if (empty($message)):
-            $message = "Not message recorded :(";
+    public $message;
+    public function run() {
+        if (empty($this->message)):
+            $this->message = "Not message recorded :(";
         endif;
-        $message = $this->prefix . $message;
-        echo $message;
-        return $message;
+        echo $this->message;
+        return $this;
+    }
+
+    public function setMessage(string $message) {
+        $this->message = $message;
+        return $this;
     }
 }
 ```
