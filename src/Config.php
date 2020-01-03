@@ -10,7 +10,6 @@ namespace Mediashare\ModulesProvider;
 class Config {
     public $modulesDir;
     public $namespace;
-    public $verbose = false;
 
     public function getModulesDir(): ?string
     {
@@ -37,17 +36,6 @@ class Config {
     public function setNamespace(string $namespace): self
     {
         $this->namespace = $namespace;
-        return $this;
-    }
-
-    public function getVerbose(): ?bool
-    {
-        return $this->verbose;
-    }
-
-    public function setVerbose(bool $verbose): self
-    {
-        $this->verbose = $verbose;
         return $this;
     }
 }
