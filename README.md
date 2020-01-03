@@ -54,31 +54,6 @@ $config->setNamespace("Mediashare\\Modules\\");
 $config->setVerbose(true);
 $modules = new Modules($config);
 $hello = $modules->get("Hello");
-$hello->prefix = "[Message] ";
-$hello->echo('Bonjour');
-```
-
-## Cluster Usage
-```php
-<?php
-// ./index.php
-require "vendor/autoload.php";
-use Mediashare\ModulesProvider\Config;
-use Mediashare\ModulesProvider\Cluster;
-use Mediashare\ModulesProvider\Modules;
-
-$config = new Config();
-$config->setModulesDir(__DIR__.'/modules/');
-$config->setNamespace("Mediashare\\Modules\\");
-$config->setVerbose(true);
-$modules = new Modules($config);
-
-$modules->get('Git')->message = "Commit message test 4"; // Init message for commit
-$cluster = new Cluster(); // Create Cluster
-$cluster->setModules([
-    clone $modules->get('Hello')->setMessage("[RUN] Git push \n"),
-    $modules->get('Git'),
-    clone $modules->get('Hello')->setMessage("[END] Git push \n"),
-]);
-$cluster->run();
+$hello->setMessage('Hello World!');
+$hello->run();
 ```
