@@ -48,27 +48,15 @@ Class Modules
         return $module;
     }
 
-
-    /**
-     * Macro for access to Module
-     *
-     * @param string $module
-     * @return object $module
-     */
-    public function get(string $module): object {
-        return $this->getModule($module);
-    }
-
     /**
      * Get specific module & init this.
      *
-     * @param string $className
+     * @param string $query
      * @return object $module
-     * @deprecated You should be use get() function.
      */
-    public function getModule(string $className) {
+    public function get(string $query): object {
         foreach ($this->modules as $module):
-            if ($className == $module->name):
+            if ($query == $module->name):
                 return $module;
             endif;
         endforeach;
