@@ -54,7 +54,6 @@ use Mediashare\ModulesProvider\Modules;
 $config = new Config();
 $config->setModulesDir(__DIR__.'/modules/');
 $config->setNamespace("Mediashare\\Modules\\");
-$config->setVerbose(true);
 $modules = new Modules($config);
 $hello = $modules->get("Hello");
 $hello->setMessage('Hello World!');
