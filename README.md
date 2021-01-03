@@ -1,5 +1,6 @@
 # Modules Provider
 **[DEPRECATED] Go to [Gitlab Project](https://gitlab.marquand.pro/MarquandT/modules-provider)**
+
 :dizzy: Modules provider is an object autoloader for automating and simplifying some code inclusion in different projects. You can call object(s) from different folders and create a container with multiple objects.
 ## Installation
 ```bash
